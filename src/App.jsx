@@ -265,11 +265,13 @@ function App() {
       </main>
 
       <footer className="footer" id="bize-ulaşın">
-        <Box>
-          <Typography className="brand footer-brand">
-            FIRIN<span>IM</span>
-          </Typography>
-          <p>İyi ekmek, iyi gün.</p>
+        <Box className="footer-intro">
+          <Typography className="footer-brand">CandyFırınım</Typography>
+          <p>Butik Pasta Atölyesi</p>
+          <address>
+            Acıbadem Cd. Uzay Apt No:79<br />
+            34718 Kadıköy / İstanbul
+          </address>
         </Box>
         <Box className="footer-links">
           <Box>

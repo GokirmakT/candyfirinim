@@ -93,14 +93,21 @@ export const bakeryStyles = `
   .newsletter-form input { padding: 14px 0; }
   .newsletter-form button { color: var(--orange); font-size: 10px; letter-spacing: .14em; }
   .subscribed { color: var(--orange) !important; font-family: 'Playfair Display', serif; font-size: 18px !important; }
-  .footer { background: var(--ink); color: #eee5d9; padding: 80px 7vw 25px; display: grid; grid-template-columns: 1fr 2fr; gap: 80px; }
-  .footer-brand { color: #fff !important; }
+  .footer { background: var(--ink); color: #eee5d9; padding: 80px 7vw 25px; display: flex; flex-wrap: wrap; align-items: start; justify-content: space-between; gap: 48px; }
+  .footer-intro { align-self: start; }
+  .footer-brand { color: #fff !important; font-family: 'Playfair Display', serif !important; font-size: 31px !important; font-weight: 500 !important; letter-spacing: -.04em !important; }
   .footer p { color: #aaa096; font-size: 12px; }
-  .footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+  .footer-intro p { margin: 8px 0 28px; color: var(--orange); text-transform: uppercase; letter-spacing: .14em; font-size: 10px; }
+  .footer-intro address { color: #c5bbb0; font-size: 13px; font-style: normal; line-height: 1.8; }
+  .footer-links { display: grid; grid-template-columns: repeat(3, minmax(110px, 1fr)); gap: 34px; flex: 1 1 500px; max-width: 620px; }
   .footer-links b { color: var(--orange); font-size: 10px; letter-spacing: .18em; display: block; margin-bottom: 20px; }
   .footer-links a, .footer-links span { display: block; color: #c5bbb0; font-size: 12px; margin-bottom: 11px; }
-  .footer .MuiDivider-root { grid-column: 1 / -1; border-color: #504941; }
-  .copyright { color: #81776e; font-size: 10px !important; grid-column: 1 / -1; }
+  .footer-map { flex: 0 1 300px; height: 190px; margin-top: 0; overflow: hidden; border: 1px solid #504941; position: relative; }
+  .footer-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: sepia(.2) saturate(.75); }
+  .map-link { position: absolute; right: 10px; bottom: 10px; padding: 8px 10px; background: var(--ink); color: #fff; font-size: 9px; letter-spacing: .12em; }
+  .map-link span { margin-left: 8px; font-size: 14px; }
+  .footer .MuiDivider-root { width: 100%; border-color: #504941; }
+  .copyright { width: 100%; color: #81776e; font-size: 10px !important; }
   .drawer-content { min-width: 260px; padding: 80px 30px; display: flex; flex-direction: column; gap: 25px; font-family: 'Playfair Display', serif; font-size: 28px; }
   .product-dialog { border-radius: 0 !important; background: var(--cream) !important; max-width: 760px !important; }
   .product-dialog .MuiDialogContent-root { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; padding: 0 !important; }
@@ -143,6 +150,7 @@ export const bakeryStyles = `
     .stories-grid { grid-template-columns: 1fr; gap: 45px; }
     .story-card img { height: 300px; }
     .footer { grid-template-columns: 1fr; gap: 45px; padding: 65px 28px 25px; }
+    .footer-intro, .footer-links, .footer-map { flex-basis: 100%; max-width: none; }
     .footer-links { gap: 12px; }
     .product-dialog .MuiDialogContent-root { grid-template-columns: 1fr; }
     .product-dialog img { height: 260px; }
