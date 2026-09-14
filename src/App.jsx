@@ -4,7 +4,11 @@ import {
   DialogContent, Divider, Drawer, IconButton, TextField,
   Toolbar, Typography,
 } from '@mui/material'
+import {
+  Facebook, Instagram, LinkedIn, Pinterest,
+} from '@mui/icons-material'
 import { bakeryStyles } from './muiStyles'
+import logo from './assets/candyfirinim_logo.png'
 
 const categories = [
   { name: 'Ekşi Mayalı Ekmek', image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=85' },
@@ -26,7 +30,21 @@ const stories = [
   { title: 'Mevsimin en güzel meyveleri', date: '08.03.2025', image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=85' },
 ]
 
-const navItems = ['Ürünler', 'Hikayemiz', 'İlham', 'Bize Ulaşın']
+const navItems = [
+  { label: 'Ana Sayfa', href: '#top' },
+  { label: 'Ürünler', href: '#products' },
+  { label: 'Pastalar', href: '#pastalar' },
+  { label: 'İlham', href: '#ilham' },
+  { label: 'Hikayemiz', href: '#our-story' },
+  { label: 'İletişim', href: '#bize-ulaşın' },
+]
+
+const socialItems = [
+  { label: 'Instagram', Icon: Instagram },
+  { label: 'Facebook', Icon: Facebook },
+  { label: 'Pinterest', Icon: Pinterest },
+  { label: 'LinkedIn', Icon: LinkedIn },
+]
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -42,20 +60,33 @@ function App() {
           <IconButton className="mobile-menu" onClick={() => setMenuOpen(true)} aria-label="Menüyü aç">☰</IconButton>
           <Box className="brand" component="a" href="#top" aria-label="Candy Fırınım">
             <span className="brand-name">CANDY FIRINIM</span>
-            <span className="brand-tagline">SALTY CANDY ATELIER</span>
+            <span className="brand-tagline">TATLI VE TUZLU LEZZETLER</span>
           </Box>
-          <Box className="desktop-links">{navItems.map((item) => <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`}>{item}</a>)}</Box>
+          <Box className="desktop-links">
+            {navItems.map((item) => <a key={item.label} href={item.href}>{item.label}</a>)}
+          </Box>
+          <Box className="social-links" aria-label="Sosyal medya bağlantıları">
+            {socialItems.map(({ label, Icon }) => (
+              <a key={label} href="#top" aria-label={label}>
+                <Icon fontSize="small" />
+              </a>
+            ))}
+          </Box>
         </Toolbar>
       </AppBar>
 
       <main id="top">
         <section className="hero-section">
+          <Box className="hero-image-wrap">
+            <Box className="hero-image" />
+          </Box>
           <Box className="hero-copy">
+            <img className="hero-logo" src={logo} alt="CandyFırınım" />
             <Typography className="eyebrow">GÜNÜN EN GÜZEL RİTÜELİ</Typography>
             <Typography component="h1">
-              Pure joy,
+              Saf mutluluk,
               <br />
-              <i>baked in.</i>
+              <i>fırından gelir.</i>
             </Typography>
             <p>
               Her gün taze, her lokmada gerçek.
@@ -65,20 +96,6 @@ function App() {
             <Button className="dark-button" href="#ürünler">
               KEŞFET <span>↗</span>
             </Button>
-          </Box>
-          <Box className="hero-image-wrap">
-            <Box className="hero-image" />
-            <Box className="hero-stamp">
-              TUTKU
-              <br />
-              <span>+</span>
-              <br />
-              SABIR
-              <br />
-              <span>+</span>
-              <br />
-              ÖZEN
-            </Box>
           </Box>
         </section>
 
@@ -198,7 +215,7 @@ function App() {
           </Box>
         </section>
 
-        <section className="stats-section">
+        <section className="stats-section" id="our-story">
           <Box className="stats-image" />
           <Box className="stats-copy">
             <Typography className="eyebrow">BİZİ BİZ YAPAN</Typography>
@@ -288,11 +305,11 @@ function App() {
         <Box className="drawer-content">
           {navItems.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase().replace(' ', '-')}`}
+              key={item.label}
+              href={item.href}
               onClick={() => setMenuOpen(false)}
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </Box>
