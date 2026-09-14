@@ -60,7 +60,7 @@ function App() {
           <IconButton className="mobile-menu" onClick={() => setMenuOpen(true)} aria-label="Menüyü aç">☰</IconButton>
           <Box className="brand" component="a" href="#top" aria-label="Candy Fırınım">
             <span className="brand-name">CANDY FIRINIM</span>
-            <span className="brand-tagline">TATLI VE TUZLU LEZZETLER</span>
+            <span className="brand-tagline">SALTY CANDY ATELIER</span>
           </Box>
           <Box className="desktop-links">
             {navItems.map((item) => <a key={item.label} href={item.href}>{item.label}</a>)}
