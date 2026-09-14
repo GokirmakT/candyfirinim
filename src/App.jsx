@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import {
-  Alert, AppBar, Box, Button, Card, CardContent, Dialog, GlobalStyles,
-  DialogContent, Divider, Drawer, IconButton, Snackbar, Stack, TextField,
+  AppBar, Box, Button, Card, CardContent, Dialog, GlobalStyles,
+  DialogContent, Divider, Drawer, IconButton, TextField,
   Toolbar, Typography,
 } from '@mui/material'
 import { bakeryStyles } from './muiStyles'
@@ -14,10 +14,10 @@ const categories = [
 ]
 
 const products = [
-  { name: 'Sandviç Ekşi Mayalı', detail: '600 g · Klasik Seri', price: '₺185', image: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=720&q=85' },
-  { name: 'Sade Kruvasan', detail: '4’lü paket · Tereyağlı', price: '₺240', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=720&q=85' },
-  { name: 'Çilekli Mascarpone Tart', detail: '6 kişilik · Günün tatlısı', price: '₺490', image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=720&q=85' },
-  { name: 'Çikolatalı Cookie', detail: '6’lı paket · Yoğun kakao', price: '₺165', image: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=720&q=85' },
+  { name: 'Sandviç Ekşi Mayalı', detail: '600 g · Klasik Seri', image: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=720&q=85' },
+  { name: 'Sade Kruvasan', detail: '4’lü paket · Tereyağlı', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=720&q=85' },
+  { name: 'Çilekli Mascarpone Tart', detail: '6 kişilik · Günün tatlısı', image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=720&q=85' },
+  { name: 'Çikolatalı Cookie', detail: '6’lı paket · Yoğun kakao', image: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=720&q=85' },
 ]
 
 const stories = [
@@ -29,28 +29,22 @@ const stories = [
 const navItems = ['Ürünler', 'Hikayemiz', 'İlham', 'Bize Ulaşın']
 
 function App() {
-  const [cart, setCart] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
   const [quickProduct, setQuickProduct] = useState(null)
-  const [toast, setToast] = useState(false)
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
-
-  const addToCart = () => {
-    setCart((current) => current + 1)
-    setToast(true)
-  }
 
   return (
     <Box className="site-shell">
       <GlobalStyles styles={bakeryStyles} />
-      <Box className="notice-bar">Hafta içi 16:00’a kadar verilen siparişlerde ertesi gün teslimat <span>✦</span> İstanbul geneli</Box>
       <AppBar position="sticky" className="main-nav" elevation={0}>
         <Toolbar className="nav-inner">
           <IconButton className="mobile-menu" onClick={() => setMenuOpen(true)} aria-label="Menüyü aç">☰</IconButton>
-          <Typography className="brand" component="a" href="#top">FIRIN<span>IM</span></Typography>
+          <Box className="brand" component="a" href="#top" aria-label="Candy Fırınım">
+            <span className="brand-name">CANDY FIRINIM</span>
+            <span className="brand-tagline">SALTY CANDY ATELIER</span>
+          </Box>
           <Box className="desktop-links">{navItems.map((item) => <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`}>{item}</a>)}</Box>
-          <Stack direction="row" className="nav-actions"><IconButton aria-label="Arama" className="action-icon">⌕</IconButton><Button className="cart-button" onClick={() => setToast(true)}>Sepet <b>{cart}</b></Button></Stack>
         </Toolbar>
       </AppBar>
 
@@ -89,7 +83,7 @@ function App() {
         </section>
 
         <section className="intro-section">
-          <Typography className="eyebrow">FIRINIM’DA</Typography>
+          <Typography className="eyebrow">CANDYFIRINIM’DA</Typography>
           <Typography component="h2">
             Yavaş pişen, <i>iyi</i> şeyler.
           </Typography>
@@ -149,40 +143,31 @@ function App() {
                 <CardContent>
                   <Typography className="product-name">{product.name}</Typography>
                   <Typography className="product-detail">{product.detail}</Typography>
-                  <Stack direction="row" justifyContent="space-between" alignItems="center">
-                    <Typography className="price">{product.price}</Typography>
-                    <Button
-                      className="add-button"
-                      onClick={(event) => {
-                        event.stopPropagation()
-                        addToCart()
-                      }}
-                    >
-                      +
-                    </Button>
-                  </Stack>
                 </CardContent>
               </Card>
             ))}
           </Box>
         </section>
 
-        <section className="stats-section">
-          <Box className="stats-image" />
-          <Box className="stats-copy">
-            <Typography className="eyebrow">BİZİ BİZ YAPAN</Typography>
+        <section className="cakes-section" id="pastalar">
+          <Box className="cakes-image" />
+          <Box className="cakes-copy">
+            <Typography className="eyebrow">PASTA ATÖLYESİ</Typography>
             <Typography component="h2">
-              Tutku, sabır,
+              Kutlamalara <i>tatlı</i>
               <br />
-              <i>mükemmellik.</i>
+              bir dokunuş.
             </Typography>
             <p>
-              1998’den beri hamura, fırına ve iyi bir sofraya inanıyoruz. Her sabah aynı heyecanla yoğuruyor, her ürünü el emeğiyle hazırlıyoruz.
+              Mevsimin meyveleri, hafif kremalar ve her katında özen. Özel günlerinize yakışacak pastaları her sabah taze hazırlıyoruz.
             </p>
-            <Box className="stats-row">
-              <Box><b>26</b><span>yıllık deneyim</span></Box>
-              <Box><b>48</b><span>günlük ürün</span></Box>
-              <Box><b>100%</b><span>gerçek malzeme</span></Box>
+            <Button className="cake-button" href="#bize-ulaşın">
+              PASTALARI KEŞFET <span>↗</span>
+            </Button>
+            <Box className="cake-notes">
+              <Box><b>01</b><span>Mevsim meyveleri</span></Box>
+              <Box><b>02</b><span>Günlük taze krema</span></Box>
+              <Box><b>03</b><span>El yapımı süsleme</span></Box>
             </Box>
           </Box>
         </section>
@@ -210,6 +195,26 @@ function App() {
                 </a>
               </article>
             ))}
+          </Box>
+        </section>
+
+        <section className="stats-section">
+          <Box className="stats-image" />
+          <Box className="stats-copy">
+            <Typography className="eyebrow">BİZİ BİZ YAPAN</Typography>
+            <Typography component="h2">
+              Tutku, sabır,
+              <br />
+              <i>mükemmellik.</i>
+            </Typography>
+            <p>
+              1998’den beri hamura, fırına ve iyi bir sofraya inanıyoruz. Her sabah aynı heyecanla yoğuruyor, her ürünü el emeğiyle hazırlıyoruz.
+            </p>
+            <Box className="stats-row">
+              <Box><b>26</b><span>yıllık deneyim</span></Box>
+              <Box><b>48</b><span>günlük ürün</span></Box>
+              <Box><b>100%</b><span>gerçek malzeme</span></Box>
+            </Box>
           </Box>
         </section>
 
@@ -271,7 +276,7 @@ function App() {
         </Box>
         <Divider />
         <Typography className="copyright">
-          © 2025 Fırınım · Tüm hakları saklıdır.
+          © 2025 CandyFırınım · Tüm hakları saklıdır.
         </Typography>
       </footer>
 
@@ -302,35 +307,16 @@ function App() {
           <DialogContent>
             <img src={quickProduct.image} alt={quickProduct.name} />
             <Box>
-              <Typography className="eyebrow">FIRINIM’DAN</Typography>
+              <Typography className="eyebrow">CANDYFIRINIM’DAN</Typography>
               <Typography component="h2">{quickProduct.name}</Typography>
               <Typography className="product-detail">
                 {quickProduct.detail}
               </Typography>
-              <Typography className="price">{quickProduct.price}</Typography>
-              <Button
-                className="dark-button"
-                onClick={() => {
-                  addToCart()
-                  setQuickProduct(null)
-                }}
-              >
-                SEPETE EKLE
-              </Button>
             </Box>
           </DialogContent>
         )}
       </Dialog>
 
-      <Snackbar
-        open={toast}
-        autoHideDuration={2200}
-        onClose={() => setToast(false)}
-      >
-        <Alert severity="success" onClose={() => setToast(false)}>
-          Ürün sepetine eklendi.
-        </Alert>
-      </Snackbar>
     </Box>
   )
 }

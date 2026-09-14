@@ -5,19 +5,15 @@ export const bakeryStyles = `
   body { margin: 0; background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; }
   a { color: inherit; text-decoration: none; }
   .site-shell { overflow: hidden; }
-  .notice-bar { background: var(--orange); color: #fff9f0; text-align: center; padding: 9px 20px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
-  .notice-bar span { padding: 0 15px; color: #f6c6a6; }
   .main-nav { background: rgba(246,241,232,.94) !important; border-bottom: 1px solid var(--line); color: var(--ink) !important; }
-  .nav-inner { min-height: 76px !important; max-width: 1280px; width: 100%; margin: auto; padding: 0 42px !important; justify-content: space-between; }
-  .brand { color: var(--ink) !important; font-size: 27px !important; font-weight: 600 !important; letter-spacing: -.08em !important; }
-  .brand span { color: var(--orange); }
+  .nav-inner { min-height: 108px !important; max-width: 1280px; width: 100%; margin: auto; padding: 0 42px !important; justify-content: space-between; }
+  .brand { color: var(--ink) !important; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; min-width: 235px; }
+  .brand-name { font-family: Georgia, 'Times New Roman', serif; font-size: 30px; font-weight: 400; letter-spacing: .17em; line-height: 1; }
+  .brand-tagline { font-family: 'DM Sans', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: .24em; line-height: 1; }
   .desktop-links { display: flex; gap: 34px; margin-left: 70px; font-size: 12px; text-transform: uppercase; letter-spacing: .12em; }
   .desktop-links a, .footer-links a { transition: color .2s; }
   .desktop-links a:hover, .footer-links a:hover { color: var(--orange); }
   .nav-actions { align-items: center; }
-  .action-icon { font-size: 26px !important; color: var(--ink) !important; font-weight: 300 !important; }
-  .cart-button { border: 1px solid var(--ink) !important; border-radius: 0 !important; color: var(--ink) !important; font-size: 11px !important; letter-spacing: .1em !important; padding: 9px 14px !important; }
-  .cart-button b { margin-left: 8px; color: var(--orange); }
   .mobile-menu { display: none !important; color: var(--ink) !important; }
   main { max-width: 1440px; margin: auto; }
   .hero-section { min-height: 660px; display: grid; grid-template-columns: 43% 57%; background: #e5dbce; }
@@ -60,8 +56,16 @@ export const bakeryStyles = `
   .product-card .MuiCardContent-root { padding: 18px 0; }
   .product-name { font-family: 'Playfair Display', serif !important; font-size: 20px !important; }
   .product-detail, .story-date { color: var(--muted) !important; font-size: 11px !important; margin: 5px 0 12px !important; }
-  .price { font-family: 'Playfair Display', serif !important; font-size: 20px !important; color: var(--orange) !important; }
-  .add-button { min-width: 34px !important; height: 34px; border-radius: 50% !important; background: var(--ink) !important; color: white !important; font-size: 20px !important; font-weight: 300 !important; }
+  .cakes-section { display: grid; grid-template-columns: 1.05fr .95fr; min-height: 620px; background: #f1dcd1; }
+  .cakes-image { min-height: 620px; background: linear-gradient(rgba(53,24,18,.08), rgba(53,24,18,.08)), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1100&q=90') center/cover; }
+  .cakes-copy { display: flex; flex-direction: column; justify-content: center; padding: 75px 8vw 70px; }
+  .cakes-copy h2 { font-size: clamp(42px, 5vw, 67px) !important; line-height: 1.04 !important; letter-spacing: -.05em !important; margin: 0 0 24px !important; }
+  .cakes-copy p { max-width: 410px; color: #765e56; font-size: 15px; line-height: 1.8; margin: 0 0 30px; }
+  .cake-button { align-self: flex-start; border: 1px solid var(--ink) !important; border-radius: 0 !important; color: var(--ink) !important; padding: 13px 18px !important; font-size: 10px !important; letter-spacing: .14em !important; }
+  .cake-button span { margin-left: 18px; font-size: 17px; }
+  .cake-notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; border-top: 1px solid rgba(36,32,28,.25); margin-top: 58px; padding-top: 18px; }
+  .cake-notes b { display: block; color: var(--orange); font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 500; }
+  .cake-notes span { display: block; color: #765e56; font-size: 10px; line-height: 1.4; margin-top: 7px; text-transform: uppercase; letter-spacing: .08em; }
   .stats-section { display: grid; grid-template-columns: 1fr 1fr; min-height: 590px; background: var(--orange); color: white; }
   .stats-image { background: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1100&q=90') center/cover; filter: sepia(.2); }
   .stats-copy { padding: 90px 10vw; display: flex; flex-direction: column; justify-content: center; }
@@ -100,11 +104,12 @@ export const bakeryStyles = `
   .product-dialog h2 { font-size: 38px !important; margin-bottom: 25px !important; }
   .product-dialog .dark-button { margin-top: 24px; }
   @media (max-width: 800px) {
-    .notice-bar { font-size: 9px; }
-    .nav-inner { min-height: 64px !important; padding: 0 18px !important; }
+    .nav-inner { min-height: 88px !important; padding: 0 18px !important; }
     .mobile-menu { display: inline-flex !important; }
-    .desktop-links, .action-icon { display: none; }
-    .brand { font-size: 23px !important; }
+    .desktop-links { display: none; }
+    .brand { min-width: 180px; }
+    .brand-name { font-size: 22px; letter-spacing: .13em; }
+    .brand-tagline { font-size: 7px; letter-spacing: .16em; }
     .hero-section, .stats-section { grid-template-columns: 1fr; }
     .hero-copy { padding: 80px 28px; }
     .hero-image-wrap { min-height: 430px; }
@@ -116,6 +121,12 @@ export const bakeryStyles = `
     .category-label p { font-size: 17px; }
     .product-image-wrap { height: 230px; }
     .product-name { font-size: 17px !important; }
+    .cakes-section { grid-template-columns: 1fr; }
+    .cakes-image { min-height: 390px; }
+    .cakes-copy { padding: 70px 28px; }
+    .cakes-copy h2 { font-size: 48px !important; }
+    .cake-notes { gap: 10px; margin-top: 45px; }
+    .cake-notes span { font-size: 8px; }
     .stats-image { min-height: 340px; }
     .stats-copy { padding: 70px 28px; }
     .stats-row { gap: 15px; }
